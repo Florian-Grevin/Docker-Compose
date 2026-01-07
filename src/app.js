@@ -12,6 +12,8 @@ const redis = require("./config/redis");
 
 const cookieParser = require("cookie-parser");
 
+const statsRoutes = require('./routes/stats.routes');
+
 const authRoutes = require('./modules/auth/auth.routes');
 
 // 👉 ICI : on crée l'app AVANT d'utiliser cookieParser
@@ -66,6 +68,8 @@ app.post('/messages', (req, res) => {
 
 // --- ROUTES AUTH ---
 app.use('/', authRoutes);
+
+app.use('/api', statsRoutes);
 
 // --- ERROR HANDLER ---
 app.use(errorHandler);
